@@ -2,7 +2,7 @@ public class main {
 	public static void main(String[] args) {
 		//Recebemos, na entrada, a sequencia de movimentos
 		CSVReader csv = new CSVReader();
-		csv.setDataSource("src/db/testeDama.csv");
+		csv.setDataSource("src/db/normalGame.csv");
 		String commands[] = csv.requestCommands();
 		
 		//Geramos o tabuleiro e imprimimos seu estado inicial
@@ -12,12 +12,12 @@ public class main {
 		tabuleiro.imprimirTabuleiro();
 		
 		//Enquanto houver movimentos, aplicamos o seguinte loop
-		for (int i = 0; i < commands.length; i++) {
-			//Imprimimos o movimento a ser feito, aplicamos no tabuleiro e o imprimimos
-			System.out.println("Source: " + commands[i].substring(0, 2));
-			System.out.println("Target: " + commands[i].substring(3));
-			tabuleiro.aplicarMovimento(commands[i]);
-			tabuleiro.imprimirTabuleiro();
-		}		
+		//for (int i = 0; i < commands.length; i++) {
+		//	//Imprimimos o movimento a ser feito, aplicamos no tabuleiro e o imprimimos
+		//	System.out.println("Source: " + commands[i].substring(0, 2));
+		//	System.out.println("Target: " + commands[i].substring(3));
+		//	tabuleiro.aplicarMovimento(commands[i]);
+		//	tabuleiro.imprimirTabuleiro();
+		//}		
 	}
 }
