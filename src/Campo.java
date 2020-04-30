@@ -24,4 +24,10 @@ public class Campo {
 	public void mostrarCampo() {
 		System.out.print("- ");
 	}
+	
+	//Verifica se um movimento na matriz campo eh possivel, partindo das coordenadas atuais e indo pra x e y
+	boolean verificaMovimento(Campo[][] campo, int x, int y) {
+		//Eh impossivel mover um campo vazio, entao retornamos falso
+		return false;		
+	}
 }

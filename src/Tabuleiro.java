@@ -35,7 +35,7 @@ public class Tabuleiro {
 			}
 		}		
 		
-		//Por mim, colocamos as pecas brancas embaixo
+		//Por fim, colocamos as pecas brancas embaixo
 		for (int i = 6; i < 8; i++) {
 			if (i == 6) {				
 				//Na linha de cima, colocamos os peoes				
@@ -66,7 +66,14 @@ public class Tabuleiro {
 		
 		sourceY = command[0] - 'a';
 		targetY = command[3] - 'a';
-	
+		
+		//Depois de adaptado a entrada, verificamos se ela eh valida
+		if (campos[sourceX][sourceY].verificaMovimento(campos, targetX, targetY)) {
+			//Aplicamos o movimento
+			
+			//Passamos o turno pra outra pessoa
+			turno = !turno;			
+		}	
 	}
 
 	void imprimirTabuleiro() {
