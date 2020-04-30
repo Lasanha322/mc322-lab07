@@ -15,8 +15,8 @@ public class Tabuleiro {
 				campos[i][0] = new Torre(i, 0, true);
 				campos[i][1] = new Cavalo(i, 1, true);
 				campos[i][2] = new Bispo(i, 2, true);
-				campos[i][3] = new Rei(i, 3, true);
-				campos[i][4] = new Rainha(i, 4, true);
+				campos[i][3] = new Rainha(i, 3, true);
+				campos[i][4] = new Rei(i, 4, true);
 				campos[i][5] = new Bispo(i, 5, true);
 				campos[i][6] = new Cavalo(i, 6, true);
 				campos[i][7] = new Torre(i, 7, true);
@@ -47,8 +47,8 @@ public class Tabuleiro {
 				campos[i][0] = new Torre(i, 0, false);
 				campos[i][1] = new Cavalo(i, 1, false);
 				campos[i][2] = new Bispo(i, 2, false);
-				campos[i][3] = new Rei(i, 3, false);
-				campos[i][4] = new Rainha(i, 4, false);
+				campos[i][3] = new Rainha(i, 3, false);
+				campos[i][4] = new Rei(i, 4, false);
 				campos[i][5] = new Bispo(i, 5, false);
 				campos[i][6] = new Cavalo(i, 6, false);
 				campos[i][7] = new Torre(i, 7, false);			
@@ -56,24 +56,14 @@ public class Tabuleiro {
 		}
 	}
 	
-	void aplicarMovimento(String commands) {
-		//Processamos o comando de entrada
-		char[] command = commands.toCharArray();
-		int sourceX, sourceY, targetX, targetY;
-		
-		sourceX = n - (command[1] - '0');
-		targetX = n - (command[4] - '0');
-		
-		sourceY = command[0] - 'a';
-		targetY = command[3] - 'a';
-		
-		//Depois de adaptado a entrada, verificamos se ela eh valida
-		if (campos[sourceX][sourceY].verificaMovimento(campos, targetX, targetY)) {
-			//Aplicamos o movimento
+	void aplicarMovimento(Movimento cmd) {
+		//Aplicamos o movimento
+		campos[cmd.sourceX][cmd.sourceY].setCoord(cmd.targetX, cmd.targetY);
+		campos[cmd.targetX][cmd.targetY] = campos[cmd.sourceX][cmd.sourceY];
+		campos[cmd.sourceX][cmd.sourceY] = new Campo(cmd.sourceX, cmd.sourceY);
 			
-			//Passamos o turno pra outra pessoa
-			turno = !turno;			
-		}	
+		//Passamos o turno pra outra pessoa
+		turno = !turno;
 	}
 
 	void imprimirTabuleiro() {
