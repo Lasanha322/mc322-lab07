@@ -14,10 +14,10 @@ public class Movimento extends Comando {
 		char charX, charY;
 		charX = (char)(8 - sourceX + '0');
 		charY = (char)(sourceY + 'a');
-		System.out.println("Source: " + charX + charY);
+		System.out.println("Source: " + charY + charX);
 		charX = (char)(8 - targetX + '0');
 		charY = (char)(targetY + 'a');
-		System.out.println("Target: " + charX + charY);
+		System.out.println("Target: " + charY + charX);
 		
 		//Verificamos se ele eh valido
 		if (tabuleiro.campos[sourceX][sourceY].verificaMovimento(tabuleiro.campos, targetX, targetY))
