@@ -104,20 +104,20 @@ public class Xeque {
 
 	public boolean cavalo(Campo[][] campo, boolean cor) {
 		boolean muv = false;
-		if (campo[this.x - 2][this.y - 1].getClass() != Cavalo.class && campo[this.x - 2][this.y - 1].getCor() != cor
-				|| campo[this.x - 2][this.y + 1].getClass() != Cavalo.class
+		if (campo[this.x - 2][this.y - 1].getClass() == Cavalo.class && campo[this.x - 2][this.y - 1].getCor() != cor
+				|| campo[this.x - 2][this.y + 1].getClass() == Cavalo.class
 						&& campo[this.x - 2][this.y + 1].getCor() != cor
-				|| campo[this.x + 2][this.y - 1].getClass() != Cavalo.class
+				|| campo[this.x + 2][this.y - 1].getClass() == Cavalo.class
 						&& campo[this.x + 2][this.y - 1].getCor() != cor
-				|| campo[this.x + 2][this.y + 1].getClass() != Cavalo.class
+				|| campo[this.x + 2][this.y + 1].getClass() == Cavalo.class
 						&& campo[this.x + 2][this.y + 1].getCor() != cor
-				|| campo[this.x - 1][this.y - 2].getClass() != Cavalo.class
+				|| campo[this.x - 1][this.y - 2].getClass() == Cavalo.class
 						&& campo[this.x - 1][this.y - 2].getCor() != cor
-				|| campo[this.x - 1][this.y + 2].getClass() != Cavalo.class
+				|| campo[this.x - 1][this.y + 2].getClass() == Cavalo.class
 						&& campo[this.x - 1][this.y + 2].getCor() != cor
-				|| campo[this.x + 1][this.y - 2].getClass() != Cavalo.class
+				|| campo[this.x + 1][this.y - 2].getClass() == Cavalo.class
 						&& campo[this.x + 1][this.y - 2].getCor() != cor
-				|| campo[this.x + 1][this.y + 2].getClass() != Cavalo.class
+				|| campo[this.x + 1][this.y + 2].getClass() == Cavalo.class
 						&& campo[this.x + 1][this.y + 2].getCor() != cor) {
 			muv = true;
 		}
