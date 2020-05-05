@@ -40,8 +40,9 @@ public class Transforma extends Comando {
 		else
 			peca = new Peao(x, y, cor);
 		
-		//Com a nova peca gerada, sobrepomos o peao com a peca nova
-		tabuleiro.campos[x][y] = peca;
+		//Com a nova peca gerada, sobrepomos o peao com a peca nova		
+		if (x >= 0 && y >= 0)
+			tabuleiro.campos[x][y] = peca;
 		
 		//Finalmente, fazemos a impressao do tabuleiro
 		System.out.println("Source: " + (char)(y + 'a') + (char)(8 - x + '0'));
