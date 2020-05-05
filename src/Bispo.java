@@ -23,18 +23,18 @@ public class Bispo extends Campo {
 		if (x != this.x || y != this.y) {
 			if (x > this.x)
 				fatorX = 1;
-			else
+			if (x < this.x)
 				fatorX = -1;
 			
 			if (y > this.y)
 				fatorY = 1;
-			else 
+			if (y > this.y)
 				fatorY = -1;
 	
 			somadorX = fatorX;
 			somadorY = fatorY;
-			
-			muv = movimento(campo, x, y);
+			if(x!=this.x && y!=this.y )
+				muv = movimento(campo, x, y);
 		}
 		
 		return muv;
