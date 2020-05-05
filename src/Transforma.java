@@ -7,9 +7,9 @@ public class Transforma extends Comando {
 	}
 	
 	public void executaComando(Tabuleiro tabuleiro) {
-		int x = 0, y = 0; //Armazena as coordenadas da peca transformada
+		int x = -1, y = -1; //Armazena as coordenadas da peca transformada
 		boolean cor = false; //Armazena cor da peca transformada
-		Campo peca = new Campo(0, 0); //Objeto usado pra armazenar a nova peca
+		Campo peca; //Objeto usado pra armazenar a nova peca
 		
 		//A transformacao eh feita apos um peao chegar no outro lado do tabuleiro
 		//Verificamos qual peao conseguiu fazer isso
@@ -40,12 +40,12 @@ public class Transforma extends Comando {
 		else
 			peca = new Peao(x, y, cor);
 		
-		//Com a nova peca gerada, sobrepomos o peao com a peca nova		
+		//Com a nova peca gerada, sobrepomos o peao com a peca nova
 		if (x >= 0 && y >= 0)
-			tabuleiro.campos[x][y] = peca;
+			tabuleiro.campos[y][x] = peca;
 		
 		//Finalmente, fazemos a impressao do tabuleiro
-		System.out.println("Source: " + (char)(y + 'a') + (char)(8 - x + '0'));
+		System.out.println("Source: " + (char)(x + 'a') + (char)(8 - y + '0'));
 		System.out.println("Target: " + novaPeca);
 		tabuleiro.imprimirTabuleiro();		
 	}	
