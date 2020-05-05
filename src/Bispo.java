@@ -20,20 +20,19 @@ public class Bispo extends Campo {
 	public boolean verificaMovimento(Campo[][] campo, int x, int y) {
 		boolean muv = false;
 		
-		if (x != this.x || y != this.y) {
+		if (x != this.x && y != this.y) {
 			if (x > this.x)
 				fatorX = 1;
-			if (x < this.x)
+			else
 				fatorX = -1;
 			
 			if (y > this.y)
 				fatorY = 1;
-			if (y > this.y)
+			else
 				fatorY = -1;
 	
 			somadorX = fatorX;
 			somadorY = fatorY;
-			if(x!=this.x && y!=this.y )
 				muv = movimento(campo, x, y);
 		}
 		
