@@ -9,6 +9,7 @@ public class Xeque {
 	public boolean verificaXeque(Campo[][] campo, boolean cor) {
 		boolean muv = false;
 		// procura posição do rei
+		//retorna true se o rei esta em xeque
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
 				if (campo[i][j].getClass() == Rei.class && campo[i][j].getCor() == cor) {
