@@ -1,5 +1,5 @@
 public class Movimento extends Comando {
-	public int sourceX, sourceY, targetX, targetY;
+	protected int sourceX, sourceY, targetX, targetY; //Armazena qual peca sera movida e o seu destino
 	
 	Movimento(int sX, int sY, int tX, int tY) {
 		super();
@@ -20,7 +20,8 @@ public class Movimento extends Comando {
 		System.out.println("Target: " + charY + charX);
 		
 		//Verificamos se ele eh valido
-		if (tabuleiro.campos[sourceX][sourceY].verificaMovimento(tabuleiro.campos, targetX, targetY))
+		if (tabuleiro.campos[sourceX][sourceY].verificaMovimento(tabuleiro.campos, targetX, targetY)
+			&& tabuleiro.campos[sourceX][sourceY].getCor() == tabuleiro.getTurno())
 			tabuleiro.aplicarMovimento(this);
 		
 		//Imprimimos o novo estado do tabuleiro

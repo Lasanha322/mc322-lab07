@@ -3,7 +3,11 @@ public class Tabuleiro {
 	protected boolean turno; //false para indicar turno da branca, true para indicar turno da preta
 	protected int n; //Armazena o tamanho do tabuleiro
 	
-	void gerarTabuleiro() {
+	public boolean getTurno() {
+		return turno;
+	}
+	
+	public void gerarTabuleiro() {
 		this.turno = false;
 		this.n = 8;
 		campos = new Campo[n][n];
@@ -56,7 +60,7 @@ public class Tabuleiro {
 		}
 	}
 	
-	void aplicarMovimento(Movimento cmd) {
+	public void aplicarMovimento(Movimento cmd) {
 		//Aplicamos o movimento
 		campos[cmd.sourceX][cmd.sourceY].setCoord(cmd.targetX, cmd.targetY);
 		campos[cmd.targetX][cmd.targetY] = campos[cmd.sourceX][cmd.sourceY];
@@ -66,7 +70,7 @@ public class Tabuleiro {
 		turno = !turno;
 	}
 
-	void imprimirTabuleiro() {
+	public void imprimirTabuleiro() {
 		//Fazemos um loop para cada linha que sera impressa
 		for (int i = 0; i < n; i++) {
 			//Pra cada linha, imprimimos os elementos nas colunas

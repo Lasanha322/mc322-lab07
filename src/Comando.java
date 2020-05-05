@@ -1,6 +1,5 @@
 public class Comando extends CSVReader {	
-	private Comando[] comandos;
-	private int n;
+	protected Comando[] comandos;
 	
 	public Comando() {
 		super();
@@ -37,7 +36,7 @@ public class Comando extends CSVReader {
 	}
 	
 	public void executaJogo() {
-		//Fazemos a impressao inicial do tabuleiro
+		//Geramos o tabuleiro e fazemos sua impressão
 		Tabuleiro tabuleiro = new Tabuleiro();
 		tabuleiro.gerarTabuleiro();
 		System.out.println("Tabuleiro inicial:");
