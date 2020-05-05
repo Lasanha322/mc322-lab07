@@ -1,5 +1,3 @@
-import java.lang.*;
-
 public class Xeque {
 	private int x, y;
 
@@ -14,7 +12,7 @@ public class Xeque {
 				}
 			}
 		}
-		//verificando possibilidade de adversarios
+		// verificando possibilidade de adversarios
 		// verifica se tem bispo
 		muv = bispo(campo, cor);
 		// verifica se tem cavalo
@@ -33,7 +31,46 @@ public class Xeque {
 		if (muv == false) {
 			muv = rei(campo, cor);
 		}
-		// falta verificar se tem rainha
+		// verifica se tem rainha
+		if (muv == false) {
+			muv = rainha(campo, cor);
+		}
+		return muv;
+	}
+//procura nas direções possiveis de cada peça
+	public boolean rainha(Campo[][] campo, boolean cor) {
+		boolean muv = false;
+		// leste
+		muv = direcoes(campo, cor, 0, 1, new Rainha(0, 0, false));
+		// nordeste
+		if (muv == false) {
+			muv = direcoes(campo, cor, -1, 1, new Rainha(0, 0, false));
+		}
+		// norte
+		if (muv == false) {
+			muv = direcoes(campo, cor, -1, 0, new Rainha(0, 0, false));
+		}
+		// noroeste
+		if (muv == false) {
+			muv = direcoes(campo, cor, -1, -1, new Rainha(0, 0, false));
+		}
+		// oeste
+		if (muv == false) {
+			muv = direcoes(campo, cor, 0, -1, new Rainha(0, 0, false));
+		}
+		// sudoeste
+		if (muv == false) {
+
+			muv = direcoes(campo, cor, 1, -1, new Rainha(0, 0, false));
+		}
+		// sul
+		if (muv == false) {
+			muv = direcoes(campo, cor, 1, 0, new Rainha(0, 0, false));
+		}
+		// sudeste
+		if (muv == false) {
+			muv = direcoes(campo, cor, 1, 1, new Rainha(0, 0, false));
+		}
 		return muv;
 	}
 
@@ -54,39 +91,19 @@ public class Xeque {
 
 	public boolean torre(Campo[][] campo, boolean cor) {
 		boolean muv = false;
-		int j = -1;
-		do {
-			if (campo[x][y + j].getClass() == Torre.class && campo[x][y + j].getCor() != cor) {
-				muv = true;
-			}
-			j--;
-		} while (y + j <= 0 || campo[x][y + j].getPeca() == true);
+		// oeste
+		muv = direcoes(campo, cor, 0, -1, new Torre(0, 0, false));
+		// leste
 		if (muv == false) {
-			j = 1;
-			do {
-				if (campo[x][y + j].getClass() == Torre.class && campo[x][y + j].getCor() != cor) {
-					muv = true;
-				}
-				j++;
-			} while (y + j <= 7 || campo[x][y + j].getPeca() == true);
+			muv = direcoes(campo, cor, 0, 1, new Torre(0, 0, false));
 		}
+		// norte
 		if (muv == false) {
-			j = -1;
-			do {
-				if (campo[x + j][y].getClass() == Torre.class && campo[x + j][y].getCor() != cor) {
-					muv = true;
-				}
-				j--;
-			} while (y + j <= 0 || campo[x + j][y].getPeca() == true);
+			muv = direcoes(campo, cor, -1, 0, new Torre(0, 0, false));
 		}
+		// sul
 		if (muv == false) {
-			j = 1;
-			do {
-				if (campo[x + j][y].getClass() == Torre.class && campo[x + j][y].getCor() != cor) {
-					muv = true;
-				}
-				j++;
-			} while (y + j <= 7 || campo[x + j][y].getPeca() == true);
+			muv = direcoes(campo, cor, 1, 0, new Torre(0, 0, false));
 		}
 		return muv;
 	}
@@ -126,51 +143,55 @@ public class Xeque {
 
 	public boolean bispo(Campo[][] campo, boolean cor) {
 		boolean muv = false;
-		int i = -1, j = 1;
-		// primeiro quadrante
-		do {
-			if (campo[x + i][y + j].getClass() == Bispo.class && campo[x + i][y + j].getCor() != cor) {
-				muv = true;
-			}
-			i--;
-			j++;
-		} while (x + i <= 0 || y + j < 8 || campo[x + i][y + j].getPeca() == true);
-		// segundo quadrante
+		// nordeste
+		muv = direcoes(campo, cor, -1, 1, new Bispo(0, 0, false));
+		// noroeste
 		if (muv == false) {
-			i = -1;
-			j = -1;
-			do {
-				if (campo[x + i][y + j].getClass() == Bispo.class && campo[x + i][y + j].getCor() != cor) {
-					muv = true;
-				}
-				i--;
-				j--;
-			} while (x + i <= 0 || y + j <= 0 || campo[x + i][y + j].getPeca() == true);
+			muv = direcoes(campo, cor, -1, -1, new Bispo(0, 0, false));
 		}
-		// terceiro quadrante
+		// sudoeste
 		if (muv == false) {
-			i = 1;
-			j = -1;
-			do {
-				if (campo[i][y + j].getClass() == Bispo.class && campo[x + i][y + j].getCor() != cor) {
-					muv = true;
-				}
-				i++;
-				j--;
-			} while (x + i < 8 || y + j <= 0 || campo[x + i][y + j].getPeca() == true);
+			muv = direcoes(campo, cor, 1, -1, new Bispo(0, 0, false));
 		}
-		// quarto quadrante
+		// sudeste
 		if (muv == false) {
-			i = 1;
-			j = 1;
-			do {
-				if (campo[i][y + j].getClass() == Bispo.class && campo[x + i][y + j].getCor() != cor) {
-					muv = true;
-				}
-				i++;
-				j++;
-			} while (x + i < 8 || y + j < 8 || campo[x + i][y + j].getPeca() == true);
+			muv = direcoes(campo, cor, 1, 1, new Bispo(0, 0, false));
 		}
 		return muv;
 	}
+//anda pela direção indicada
+	public boolean  direcoes(Campo[][] campo, boolean cor,int i,int j, Campo p) {
+		boolean muv = false;
+		int m1=0,M=0,s1=0,S=0;
+		if(i<0) {
+			m1=7;
+			s1=-1;
+		}
+		else if(i==0) {
+			s1=0;
+		}else {
+			m1=0;
+			s1=1;
+		}
+		
+		if(j<0) {
+			M=7;
+			S=-1;
+		}
+		else if(j==0) {
+			S=0;
+		}else {
+			M=7;
+			S=1;
+		}
+		
+		do {
+			if (campo[x+i][y + j].getClass() == p.getClass() && campo[x + i][y + j].getCor() != cor) {
+				muv = true;
+			}
+			i+=s1;
+			j+=S;
+		} while (x + i <=m1 && i!=0 || y + j <=M && j!=0|| campo[x + i][y + j].getPeca() == true || muv==true);
+		return muv;
+		}
 }
